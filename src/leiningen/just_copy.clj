@@ -5,11 +5,11 @@
 
 
 (defn process-path [path project]
-  (println path)
   (cond
     (string? path)  path
     (keyword? path) (project path)
-    (vector? path) (str/join (java.io.File/separator) (map #(process-path % project) path))))
+    (vector? path) (str/join (java.io.File/separator) (map #(process-path % project) path))
+    (list? path) (str/join "" (map #(process-path % project) path))))
 
 (defn directory? [f]
   (.isDirectory f))
@@ -24,7 +24,7 @@
           (io/copy s dest-file))))))
 
 (defn just-copy
-  "copies files around..."
+  "just copies files around..."
   [project & args]
   (let [files (map (fn [[source dest]]
                      {:src (g/glob (process-path source project)) :dest (process-path dest project)})
@@ -34,6 +34,13 @@
 
 
 
+(comment
+  (def test-project
+    {:name "hello"
+     :version "1.2.3"
+     :src "src"
+     :target-path "hello"
+     :just-copy [[[:src "leiningen/*.clj"] :target-path]]})
 
 
-
+  (just-copy test-project))
