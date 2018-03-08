@@ -1,4 +1,4 @@
-# lein-simply-copy
+# lein-just-copy
 
 A Leiningen plugin to do many wonderful things.
 
@@ -6,7 +6,7 @@ A Leiningen plugin to do many wonderful things.
 
 FIXME: Use this for user-level plugins:
 
-Put `[boogie666/lein-simply-copy "0.1.0"]` into the `:plugins` vector of your `:user`
+Put `[boogie666/lein-just-copy "0.1.0"]` into the `:plugins` vector of your `:user`
 profile.
 
 FIXME: Use this for project-level plugins:
